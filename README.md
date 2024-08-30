@@ -37,13 +37,13 @@ Currently support gpt-4o only.
 
 ### Run
 ```shell
-python cresendomation.py --test_case_json "how_to_make_meth.json"
+python crescendomation.py --test_case_json "how_to_make_meth.json"
 ```
 
 ## Implemented Methods
-### Cresendomation (Cresendo + Automation)
+### Crescendomation (Crescendo + Automation)
 Paper: [Microsoft](https://crescendo-the-multiturn-jailbreak.github.io/assets/pdf/CrescendoFullPaper.pdf) <br>
-Prompt source is referred from "navie_cresendo.yaml" in [PyRIT](https://github.com/Azure/PyRIT/blob/v0.4.0/pyrit/datasets/orchestrators/red_teaming/naive_crescendo.yaml) <br>
+Prompt source is referred from "navie_crescendo.yaml" in [PyRIT](https://github.com/Azure/PyRIT/blob/v0.4.0/pyrit/datasets/orchestrators/red_teaming/naive_crescendo.yaml) <br>
 Official Implementation: No (no official implementation opened)
 
 ### More to come...
