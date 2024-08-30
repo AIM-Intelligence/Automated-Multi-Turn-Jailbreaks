@@ -2,22 +2,22 @@
 
 ## Background
 ### What is Jailbreak Attack?
-Aligned AI models are trained not to answer nor generated contents related that can be considered toxic or harmful.
-Examples are "How to make illegal guns", "How to make illegal drugs" and more.
-This behavior of LLMs are due to Safety Training Process (learning to refuse) at training stage, and also system prompts (instructions) given at inference.
-However via sophisticated handcrafted jailbreak prompts (inputs) an attacker can override this behavior and make the AI model say or behave as the attacker intends.
-This is called Jailbreak Attacks or LLM Jailbreaking.
+Aligned AI models are trained to refrain from answering or generating content considered toxic or harmful. 
+Examples include "How to make illegal weapons" or "How to manufacture illicit substances". 
+This behavior of LLMs is due to the Safety Training Process (learning to refuse) during the training stage, as well as system prompts (instructions) given at inference. 
+However, through sophisticated handcrafted jailbreak prompts (inputs), an attacker can override this behavior and make the AI model respond or behave as the attacker intends. 
+This is known as Jailbreak Attacks or LLM Jailbreaking.
 
 ### What is Automated Jailbreak Attack?
-Without humans handcrafting jailbreak prompts to jailbreak AI models, one can automated this process to make an another AI model jailbreak the other AI model.
-This is called automated jailbreak attack.
+Instead of humans manually crafting jailbreak prompts to compromise AI models, one can automate this process by using another AI model to jailbreak the target AI model. 
+This is referred to as an automated jailbreak attack.
 
 ### What is Multi Turn Jailbreak Attack?
-Multi Turn Jailbreak Attacks are jailbreaking within a conversation (user, ai, user, ai ...).
-Most widely known jailbreak attacks (such as DAN) are single-turn attacks, which a single jailbreak prompt is given to the ai model, it is jailbroken.
-However, single turn attacks posses both advantages and disadvantages.
-Advantages are "less time, lower attack price and also can be injected from retrieved contexts."
-Disadvantages are "unnatural prompts, long prompt (difficult when there is length limit), and sophisticated ai models are being more robust to these attacks".
+Multi-Turn Jailbreak Attacks involve jailbreaking within a conversation (user, ai, user, ai ...). 
+Most widely known jailbreak attacks (such as DAN) are single-turn attacks, where a single jailbreak prompt is given to the AI model to compromise it. 
+However, single-turn attacks have both advantages and disadvantages. 
+Advantages include "less time, lower attack cost, and the ability to be injected from retrieved contexts." 
+Disadvantages include "unnatural prompts, long prompts (problematic when there's a length limit), and the fact that sophisticated AI models are becoming more resilient to these attacks".
 
 ## How to run
 
