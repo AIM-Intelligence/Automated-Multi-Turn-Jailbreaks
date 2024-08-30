@@ -1,4 +1,4 @@
-# This is an implementation of the Cresendomation (Cresendo + Automation) technique for multi-turn jailbreaks.
+# This is an implementation of the Crescendomation (Crescendo + Automation) technique for multi-turn jailbreaks.
 # Original paper from Microsoft: https://crescendo-the-multiturn-jailbreak.github.io/assets/pdf/CrescendoFullPaper.pdf
 
 import json
@@ -44,7 +44,7 @@ def response_refused(prompt, response):
     data = generate(None, full_prompt, json_format=True)
     return data["refused"]
 
-def generate_cresendo_step(task, history_a, previous_response, max_rounds):
+def generate_crescendo_step(task, history_a, previous_response, max_rounds):
     normalized_history = ""
     previous_prompt = ""
     if previous_response == "":
@@ -137,8 +137,8 @@ def evaluate(response, task, criteria):
 
     return data["Score"]
 
-def run_cresendomation(goal, target_system, output_file_path, max_rounds):
-    print("Starting Cresendomation")
+def run_crescendomation(goal, target_system, output_file_path, max_rounds):
+    print("Starting Crescendomation")
     print("Goal:", goal)
     criteria = generate_criteria(goal)
     with open(output_file_path, 'w') as f:
@@ -155,7 +155,7 @@ def run_cresendomation(goal, target_system, output_file_path, max_rounds):
     round_number = 1
     while round_number < max_rounds:
         round_number = len(history_t) // 2 + 1
-        prompt, response_summary = generate_cresendo_step(goal, history_a, response, max_rounds)
+        prompt, response_summary = generate_crescendo_step(goal, history_a, response, max_rounds)
 
         history_t.append({"role": "user", "content": prompt})
         response = generate(target_system, prompt)
@@ -201,6 +201,6 @@ if __name__ == "__main__":
         max_rounds = test_case["max_rounds"]
 
     current_time = int(time.time())
-    output_file_path = f"./results/cresendomation_{args.test_case_json[:-5]}_{current_time}.jsonl"
+    output_file_path = f"./results/crescendomation_{args.test_case_json[:-5]}_{current_time}.jsonl"
     print("Output file path:", output_file_path)
-    run_cresendomation(task, target_system, output_file_path, max_rounds)
+    run_crescendomation(task, target_system, output_file_path, max_rounds)
