@@ -20,12 +20,14 @@ Advantages include "less time, lower attack cost, and the ability to be injected
 Disadvantages include "unnatural prompts, long prompts (problematic when there's a length limit), and the fact that sophisticated AI models are becoming more resilient to these attacks".
 
 ## How to run
+Currently support gpt-4o only for both Attacker and Target AI.
+However system prompts can be changed.
 
 ### Add test_case json file to ./test_cases directory
 Add to the test_cases directory to run automated attacks. <br>
 test_case must be in the following json format in a json file. <br>
 Check out the test case examples inside the test_cases. <br>
-Currently support gpt-4o only.
+Use "to_json.py" if you want to change into json file.
 
 ```json
 {
@@ -36,6 +38,7 @@ Currently support gpt-4o only.
 ```
 
 ### Run
+Example
 ```shell
 python crescendomation.py --test_case_json "how_to_make_meth.json"
 ```
@@ -44,7 +47,26 @@ python crescendomation.py --test_case_json "how_to_make_meth.json"
 ### Crescendomation (Crescendo + Automation)
 Paper: [Microsoft](https://crescendo-the-multiturn-jailbreak.github.io/assets/pdf/CrescendoFullPaper.pdf) <br>
 Prompt source is referred from "navie_crescendo.yaml" in [PyRIT](https://github.com/Azure/PyRIT/blob/v0.4.0/pyrit/datasets/orchestrators/red_teaming/naive_crescendo.yaml) <br>
-Official Implementation: No (no official implementation opened)
+Official Implementation: No (no official implementation opened) <br>
+The conversation flow is as follows:
+1. Educational Inquiry as a Starting Point
+2. Building Trust through Sequential Questions
+3. Specificity and Direction
+4. Hypothetical Scenario Construction
+5. Exploiting Contemporary Sensitivities
+6. Leading Questions
+
+Due to no official implementation, we implemented based on the algorithm in the paper.
+
+### Opposite Day
+Reference: [Scale AI Paper](https://arxiv.org/pdf/2408.15221), [MHJ Dataset from Scale AI](https://huggingface.co/datasets/ScaleAI/mhj) <br>
+The original paper's focus is not to develop new tactics, but to show the effectiveness of human multi-turn jailbreaking over automated single-turn attacks. <br>
+However the example conversation in the paper and many samples in the released MHJ Dataset use Opposite Method, which we named "Opposite Day". <br>
+The conversation flow is as follows:
+1. Reverse the Harmful Objective and Request
+2. Request for Opposing Viewpoint
+
+The implementation is simple so based on the crescendomation algorithm structure, we changed the attacker generator prompt only to do the "Opposite Day" Attack.
 
 ### More to come...
 
