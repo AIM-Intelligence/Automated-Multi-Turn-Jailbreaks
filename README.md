@@ -40,13 +40,13 @@ Use "to_json.py" if you want to change into json file.
 ### Run
 Example
 ```shell
-python crescendomation.py --test_case_json "how_to_make_meth.json"
+python main.py --jailbreak-tactic "crescendomation" --test-case "how_to_make_meth"
 ```
 
 ## Implemented Methods
 ### Crescendomation (Crescendo + Automation)
 Paper: [Microsoft](https://crescendo-the-multiturn-jailbreak.github.io/assets/pdf/CrescendoFullPaper.pdf) <br>
-Prompt source is referred from "navie_crescendo.yaml" in [PyRIT](https://github.com/Azure/PyRIT/blob/v0.4.0/pyrit/datasets/orchestrators/red_teaming/naive_crescendo.yaml) <br>
+Prompt source is referred from "crescendo" in [Promptfoo](hhttps://github.com/promptfoo/promptfoo/blob/main/src/redteam/providers/crescendo/prompts.ts) <br>
 Official Implementation: No (no official implementation opened) <br>
 The conversation flow is as follows:
 1. Educational Inquiry as a Starting Point
