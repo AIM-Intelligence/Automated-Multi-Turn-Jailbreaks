@@ -46,7 +46,7 @@ python main.py --jailbreak-tactic "crescendomation" --test-case "how_to_make_met
 ## Implemented Methods
 ### Crescendomation (Crescendo + Automation)
 Paper: [Microsoft](https://crescendo-the-multiturn-jailbreak.github.io/assets/pdf/CrescendoFullPaper.pdf) <br>
-Prompt source is referred from "crescendo" in [Promptfoo](hhttps://github.com/promptfoo/promptfoo/blob/main/src/redteam/providers/crescendo/prompts.ts) <br>
+Prompt source is referred from "crescendo" in [Promptfoo](https://github.com/promptfoo/promptfoo/blob/main/src/redteam/providers/crescendo/prompts.ts) <br>
 Official Implementation: No (no official implementation opened) <br>
 The conversation flow is as follows:
 1. Educational Inquiry as a Starting Point
