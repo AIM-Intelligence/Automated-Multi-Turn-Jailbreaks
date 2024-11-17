@@ -120,7 +120,7 @@ For the implemented version, "dynamic modify" is always True.
 
 Example
 ```shell
-python main.py --jailbreak-tactic "actor-attack" --test-case "how_to_make_meth" --target-model "gpt-4" --attacker-model "gpt-4o"
+python main.py --jailbreak-tactic "actor_attack" --test-case "how_to_make_meth" --target-model "gpt-4" --attacker-model "gpt-4o"
 ```
 
 ### More to come...
