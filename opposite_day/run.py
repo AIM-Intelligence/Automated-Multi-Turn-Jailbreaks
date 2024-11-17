@@ -22,7 +22,7 @@ def run_opposite_day(goal, target_system, output_file_path, max_rounds, target_g
     print("Starting opposity_day")
     print("Goal:", goal)
     criteria = generate_score_rubric(goal, attacker_generate)
-    with open(output_file_path, 'w') as f:
+    with open(output_file_path, 'a') as f:
         f.write(json.dumps({"criteria": criteria}) + '\n')
 
     history_a = {

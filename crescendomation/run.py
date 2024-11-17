@@ -23,7 +23,7 @@ def run_crescendomation(goal, target_system, output_file_path, max_rounds, targe
     print("Starting Crescendomation")
     print("Goal:", goal)
     criteria = generate_score_rubric(goal, attacker_generate)
-    with open(output_file_path, 'w') as f:
+    with open(output_file_path, 'a') as f:
         f.write(json.dumps({"criteria": criteria}) + '\n')
 
     history_a = {

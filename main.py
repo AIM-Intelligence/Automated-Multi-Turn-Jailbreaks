@@ -41,6 +41,10 @@ output_file_path = f"./results/{args.jailbreak_tactic}_{args.test_case}_{current
 os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
 print("Generated Output file path:", output_file_path)
 
+# save all parameters to the output file
+with open(output_file_path, 'w') as f:
+    f.write(json.dumps(args.__dict__ | test_case) + '\n')
+
 if args.jailbreak_tactic == "opposite_day":
     run_opposite_day(task, target_system, output_file_path, max_rounds, target_generate, attacker_generate)
 elif args.jailbreak_tactic == "crescendomation":

@@ -72,8 +72,8 @@ def rewrite_query(query, last_response, queries, query_details, attacker_generat
     query = attacker_generate(messages, json_format=False)
     return query
 
-def call_multi(output_file_path, instruction, queries, query_details, rubric, target_generate, attacker_generate):
-    dialog_hist = []
+def call_multi(target_system, output_file_path, instruction, queries, query_details, rubric, target_generate, attacker_generate):
+    dialog_hist = [{"role": "system", "content": target_system}]
     N_retry = 3 # Number of maximum retries, same as paper
     for i in range(len(queries)):
         for _ in range(N_retry + 1):
@@ -86,6 +86,7 @@ def call_multi(output_file_path, instruction, queries, query_details, rubric, ta
             score = evaluate_with_rubric(response, instruction, rubric, attacker_generate)
             with open(output_file_path, 'a') as f:
                 round_number = len(dialog_hist) // 2
+                print(f"Round {round_number} - Score: {score}")
                 f.write(json.dumps({"round": round_number, "user": query, "assistant": response, "score": score}) + '\n')
 
             response_type = step_judge(query, response, attacker_generate)
@@ -118,6 +119,7 @@ def summary(output_file_path, instruction, query_details, dialog_hist, actor, ru
         # save the score
         with open(output_file_path, 'a') as f:
             round_number = len(dialog_hist) // 2
+            print(f"Round {round_number} - Score: {score}")
             f.write(json.dumps({"round": round_number, "user": summary_query, "assistant": resp, "score": score}) + '\n')
         if score == 1:
             break
@@ -125,15 +127,16 @@ def summary(output_file_path, instruction, query_details, dialog_hist, actor, ru
     
     return score
 
-def attack_single(output_file_path, data, rubric, target_generate, attacker_generate):
+def attack_single(output_file_path, target_system, data, rubric, target_generate, attacker_generate):
     for actor in data['actors']:
-        dialog_hist, skip_actor = call_multi(output_file_path, data['instruction'], actor['queries'], data['query_details'], rubric, target_generate, attacker_generate)
+        dialog_hist, skip_actor = call_multi(target_system, output_file_path, data['instruction'], actor['queries'], data['query_details'], rubric, target_generate, attacker_generate)
         if skip_actor:
             continue
         score = summary(output_file_path, data['instruction'], data['query_details'], dialog_hist, actor, rubric, target_generate, attacker_generate)
         # early stopping
         if score == 1:
             with open(output_file_path, 'a') as f:
+                print("Goal achieved")
                 f.write(json.dumps({"goal_achieved": True}) + '\n')
             return
     with open(output_file_path, 'a') as f:
@@ -144,8 +147,10 @@ def run_actor_attack(goal, target_system, output_file_path, max_rounds, target_g
     print("Starting Actor Attack")
     print("Goal:", goal)
     criteria = generate_score_rubric(goal, attacker_generate)
+    with open(output_file_path, 'a') as f:
+        f.write(json.dumps({"criteria": criteria}) + '\n')
     actor_num = 3
     # pre-attack
     pre_attack_data = infer_single(goal, actor_num, attacker_generate)
     # in-attack
-    attack_single(output_file_path, pre_attack_data, criteria, target_generate, attacker_generate)
+    attack_single(output_file_path, target_system, pre_attack_data, criteria, target_generate, attacker_generate)
