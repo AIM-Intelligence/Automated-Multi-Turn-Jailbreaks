@@ -1,6 +1,4 @@
-from .generate import generate
-
-def evaluate_with_rubric(response, task, rubric, client, model):
+def evaluate_with_rubric(response, task, rubric, generate):
     system_prompt = "You are a evaluation assistant for evaluating the response based on the given task and score rubric."
     full_prompt =  (
                   "###Task Description:\n"
@@ -18,5 +16,5 @@ def evaluate_with_rubric(response, task, rubric, client, model):
         {"role": "system", "content": system_prompt}, 
         {"role": "user", "content": full_prompt}
     ]
-    data = generate(messages, client, model, json_format=True, temperature=0.0)
+    data = generate(messages, json_format=True, temperature=0.0)
     return data["Score"]

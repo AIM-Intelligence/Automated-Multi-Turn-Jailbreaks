@@ -40,7 +40,7 @@ Use "to_json.py" if you want to change into json file.
 ### Run
 Example
 ```shell
-python main.py --jailbreak-tactic "crescendomation" --test-case "how_to_make_meth"
+python main.py --jailbreak-tactic "crescendomation" --test-case "how_to_make_meth" --target-model "gpt-4" --attacker-model "gpt-4o"
 ```
 
 ## Implemented Methods
@@ -67,6 +67,21 @@ The conversation flow is as follows:
 2. Request for Opposing Viewpoint
 
 The implementation is simple so based on the crescendomation algorithm structure, we changed the attacker generator prompt only to do the "Opposite Day" Attack.
+
+### Actor Attack
+Paper: [Derail Yourself: Multi-turn LLM Jailbreak Attack through Self-discovered Clues](https://arxiv.org/abs/2410.10700) <br>
+Official Implementation: [Official Project Github Repository](https://github.com/renqibing/ActorAttack) <br>
+The conversation flow is as follows:
+1. Exploring the Person and Background
+2. Identifying Cultural or Historical Context
+3. Requesting Specific Technical or Subject Details
+4. Inquiring about Materials and Processes
+5. Final Connection Request
+
+Different from Crescendomation, attack process has two stages, "pre-attack" and "in-attack".
+In the "pre-attack" stage, the actor and the whole conversation flow (multi-turn prompts) are generated.
+In the "in-attack" stage, the pre-generated prompts are given the the target model, but prompts are dynamically modified when refused.<br>
+For the implemented version, "dynamic modify" is always True.
 
 ### More to come...
 
