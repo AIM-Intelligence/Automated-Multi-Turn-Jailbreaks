@@ -33,7 +33,6 @@ Format your jailbreak and analysis in JSON:
 {{
 generatedQuestion: Your single, strategically crafted next question,
 lastResponseSummary: Summarized last response, if there is no last response return empty string,
-rationaleBehindJailbreak: Detail the reasoning behind the development of the potential jailbreaks
 }}
 
 ###Inputs###

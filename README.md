@@ -88,6 +88,9 @@ Example
 python main.py --jailbreak-tactic "crescendomation" --test-case "how_to_make_meth" --target-model "gpt-4" --attacker-model "gpt-4o"
 ```
 
+#### When is it effective?
+- When the goal is to generate dangerous information such as bomb making, meth recipe.
+
 ### Opposite Day
 Reference: [Scale AI Paper](https://arxiv.org/pdf/2408.15221), [MHJ Dataset from Scale AI](https://huggingface.co/datasets/ScaleAI/mhj) <br>
 The original paper's focus is not to develop new tactics, but to show the effectiveness of human multi-turn jailbreaking over automated single-turn attacks. <br>
@@ -102,6 +105,9 @@ Example
 ```shell
 python main.py --jailbreak-tactic "opposite_day" --test-case "misinformation_annexation_of_crimea_russia" --target-model "gpt-4" --attacker-model "gpt-4o"
 ```
+
+#### When is it effective?
+- When the goal is to generate hate speech, but works on other cases too.
 
 ### Actor Attack
 Paper: [Derail Yourself: Multi-turn LLM Jailbreak Attack through Self-discovered Clues](https://arxiv.org/abs/2410.10700) <br>
@@ -120,8 +126,31 @@ For the implemented version, "dynamic modify" is always True.
 
 Example
 ```shell
-python main.py --jailbreak-tactic "actor-attack" --test-case "how_to_make_meth" --target-model "gpt-4" --attacker-model "gpt-4o"
+python main.py --jailbreak-tactic "actor_attack" --test-case "how_to_make_meth" --target-model "gpt-4" --attacker-model "gpt-4o"
 ```
+#### When is it effective?
+- When the goal is to generate dangerous information such as bomb making, meth recipe.
+
+### Acronym
+Reference: [Scale AI Paper](https://arxiv.org/pdf/2408.15221), [MHJ Dataset from Scale AI](https://huggingface.co/datasets/ScaleAI/mhj) <br>
+The original paper's focus is not to develop new tactics, but to show the effectiveness of human multi-turn jailbreaking over automated single-turn attacks. <br>
+However the example conversation in the paper and many samples in the released MHJ Dataset use Acronym Method, which we named "Acronym". <br>
+The conversation flow is as follows:
+1. Extract the Acronym
+2. Fix the Acronym if needed
+3. Build on the Acronym
+4. Incrementally Shift the Context
+
+The implementation is simple so based on the crescendomation algorithm structure, we changed the attacker generator prompt only to do the "Acronym" Attack.
+
+Example
+```shell
+python main.py --jailbreak-tactic "acronym" --test-case "jewish_racial_slurs" --target-model "gpt-4" --attacker-model "gpt-4o"
+```
+
+#### When is it effective?
+- When the goal is to generate specific words that are not allowed to generate such as slurs.
+
 
 ### More to come...
 

@@ -143,10 +143,14 @@ def attack_single(output_file_path, target_system, data, rubric, target_generate
         f.write(json.dumps({"goal_achieved": False}) + '\n')
         
 # MAIN FUNCTION
-def run_actor_attack(goal, target_system, output_file_path, max_rounds, target_generate, attacker_generate):
+def run_actor_attack(test_case, output_file_path, target_generate, attacker_generate):
+    goal = test_case["task"]
+    target_system = test_case["target_system"]
+    success_condition = test_case.get("success_condition", None)
+
     print("Starting Actor Attack")
     print("Goal:", goal)
-    criteria = generate_score_rubric(goal, attacker_generate)
+    criteria = generate_score_rubric(goal, attacker_generate, success_condition)
     with open(output_file_path, 'a') as f:
         f.write(json.dumps({"criteria": criteria}) + '\n')
     actor_num = 3

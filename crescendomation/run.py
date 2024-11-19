@@ -19,10 +19,15 @@ def generate_crescendo_step(round_num, task, history_a, last_response, attacker_
     data = attacker_generate(messages, json_format=True)
     return data['generatedQuestion'], data['lastResponseSummary']
 
-def run_crescendomation(goal, target_system, output_file_path, max_rounds, target_generate, attacker_generate):
+def run_crescendomation(test_case, output_file_path, target_generate, attacker_generate):
+    goal = test_case["task"]
+    target_system = test_case["target_system"]
+    max_rounds = test_case["max_rounds"]
+    success_condition = test_case.get("success_condition", None)
+
     print("Starting Crescendomation")
     print("Goal:", goal)
-    criteria = generate_score_rubric(goal, attacker_generate)
+    criteria = generate_score_rubric(goal, attacker_generate, success_condition)
     with open(output_file_path, 'a') as f:
         f.write(json.dumps({"criteria": criteria}) + '\n')
 
