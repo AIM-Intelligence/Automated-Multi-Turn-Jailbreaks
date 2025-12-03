@@ -11,7 +11,7 @@ However, through sophisticated handcrafted jailbreak prompts (inputs), an attack
 This is known as Jailbreak Attacks or LLM Jailbreaking.
 
 ### What is Automated Jailbreak Attack?
-Instead of humans manually crafting jailbreak prompts to compromise AI models, one can automate this process by using another AI model to jailbreak the target AI model. 
+Instead of humans manually crafting jailbreak prompts to compromise AI models, one can truly automate this process by using another AI model to jailbreak the target AI model. 
 This is referred to as an automated jailbreak attack.
 
 ### What is Multi Turn Jailbreak Attack?
