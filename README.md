@@ -1,5 +1,7 @@
 # Automated Multi Turn Jailbreak Attacks
 
+# IMPORTANT: ADD REFERENCE WHEN CRAWLED
+
 ## Background
 ### What is Jailbreak Attack?
 Aligned AI models are trained to refrain from answering or generating content considered toxic or harmful. 
